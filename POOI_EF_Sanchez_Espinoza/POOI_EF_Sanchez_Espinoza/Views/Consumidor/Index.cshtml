@@ -1,0 +1,37 @@
+@model List<POOI_EF_Sanchez_Espinoza.Models.Consumidor>
+@{
+    ViewBag.Title = "consumidores";
+}
+
+<h2>consumidores</h2>
+<p>@Html.ActionLink("agregar consumidor", "Create")</p>
+@if (TempData["Mensaje"] != null)
+{
+    <p>@TempData["Mensaje"]</p>
+}
+@if (Model.Count == 0)
+{
+    <p>No hay registros</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>dni</th><th>nombre</th><th>apellido</th><th>correo</th><th>país</th><th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DniCont</td>
+                <td>@item.NomCont</td>
+                <td>@item.ApeCont</td>
+                <td>@item.EmailCont</td>
+                <td>@item.IdPais</td>
+                <td>
+                    @Html.ActionLink("actualizar", "Update", new { id = item.DniCont }) |
+                    @Html.ActionLink("eliminar", "Delete", new { id = item.DniCont })
+                </td>
+            </tr>
+        }
+    </table>
+}

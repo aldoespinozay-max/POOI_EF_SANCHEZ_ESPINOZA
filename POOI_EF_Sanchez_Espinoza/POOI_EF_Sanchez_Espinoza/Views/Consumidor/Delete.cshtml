@@ -1,0 +1,13 @@
+@model POOI_EF_Sanchez_Espinoza.Models.Consumidor
+@{
+    ViewBag.Title = "eliminar consumidor";
+}
+
+<h2>eliminar consumidor</h2>
+<p>¿deseas eliminar a @Model.NomCont @Model.ApeCont (@Model.DniCont)?</p>
+@using (Html.BeginForm("Delete", "Consumidor", new { id = Model.DniCont }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="eliminar" class="btn btn-danger" />
+}
+<p>@Html.ActionLink("volver a la lista", "Index")</p>
